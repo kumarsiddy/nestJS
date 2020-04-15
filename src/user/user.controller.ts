@@ -16,11 +16,6 @@ export class UserController {
         this.userService.create(createUserDto);
     }
 
-    @Post('signin')
-    async signIn(@Request() req) {
-        return '';
-    }
-
     @Get('findAll')
     findAll() {
         return this.userService.findAll();

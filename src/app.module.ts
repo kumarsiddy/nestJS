@@ -6,6 +6,7 @@ import { UserService } from './user/user.service';
 import { DB_URL } from './user/constants/constants';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [MongooseModule.forRoot(DB_URL,
@@ -15,8 +16,8 @@ import { AuthService } from './auth/auth.service';
       useCreateIndex: true,
       useFindAndModify: false
     }),
-    UserModule,
     AuthModule
   ],
+  controllers: [AppController]
 })
 export class AppModule { }
