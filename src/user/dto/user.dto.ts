@@ -7,6 +7,6 @@ export class CreateUserDto {
 }
 
 export class LoginUserDto {
-  email: string;
+  username: string;
   password: string;
 }

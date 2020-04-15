@@ -6,30 +6,31 @@ import { LoginUserDto } from 'src/user/dto/user.dto';
 
 @Injectable()
 export class AuthService {
-    constructor(
-        private readonly userService: UserService,
-        private readonly jwtService: JwtService
-    ) { }
+  constructor(
+    private readonly userService: UserService,
+    private readonly jwtService: JwtService,
+  ) {
+  }
 
-    public async validateUser(email: string): Promise<User> {
-        // Password validation should happen here 
-        return await this.userService.findByEmail(email);
-    }
+  public async validateUser(email: string): Promise<User> {
+    // Password validation should happen here
+    return await this.userService.findByEmail(email);
+  }
 
-    public async signin(loginUserDto: LoginUserDto): Promise<any | { status: number }> {
+  public async signin(loginUserDto: LoginUserDto): Promise<any | { status: number }> {
 
-        return this.validateUser(loginUserDto.email).then((user) => {
-            if (!user) {
-                return { status: 404 };
-            }
-            let payload = {
-                email: user.email
-            };
-            const accessToken = this.jwtService.sign(payload);
-            return {
-                access_token: accessToken
-            };
+    return this.validateUser(loginUserDto.username).then((user) => {
+      if (!user) {
+        return { status: 404 };
+      }
+      const payload = {
+        email: user.email,
+      };
+      const accessToken = this.jwtService.sign(payload);
+      return {
+        token: accessToken,
+      };
 
-        });
-    }
+    });
+  }
 }
