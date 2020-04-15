@@ -17,9 +17,8 @@ export class AuthService {
     return await this.userService.findByEmail(email);
   }
 
-  public async signin(loginUserDto: LoginUserDto): Promise<any | { status: number }> {
-
-    return this.validateUser(loginUserDto.username).then((user) => {
+  public async signin(user: User): Promise<any | { status: number }> {
+    return this.validateUser(user.email).then((user) => {
       if (!user) {
         return { status: 404 };
       }
