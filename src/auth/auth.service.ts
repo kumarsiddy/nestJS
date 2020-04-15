@@ -23,15 +23,11 @@ export class AuthService {
                 return { status: 404 };
             }
             let payload = {
-                name: user.name,
-                email: user.email,
-                dob: user.dob
+                email: user.email
             };
             const accessToken = this.jwtService.sign(payload);
             return {
-                access_token: accessToken,
-                payload: payload,
-                status: 200
+                access_token: accessToken
             };
 
         });
