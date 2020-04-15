@@ -5,8 +5,3 @@ export class CreateUserDto {
   readonly mobile: string;
   readonly password: string;
 }
-
-export class LoginUserDto {
-  username: string;
-  password: string;
-}
