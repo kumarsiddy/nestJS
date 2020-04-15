@@ -1,1 +1,3 @@
-export const JWT_SECRET = 'asdffkdfkd';
+export const jwtConstants = {
+  secret: 'AdWfR!@#R',
+};
